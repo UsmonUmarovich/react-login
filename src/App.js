@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { AuthLayout } from "./pages/auth/AuthLayout";
+import { Login, Register } from "./pages/auth/index";
+import { Home } from "./pages/public/Home";
+import { Layout } from "./pages/public/Layout";
+import { Profile } from "./pages/public/Profile";
 
-function App() {
+export const App = () => {
+  const [loggedin, setLoggedin] = useState(false);
+  const [users, setUsers] = useState([])
+
+  const admin = {
+    username: "admin",
+    password: "admin"
+  }
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedin) {
+      return navigate("/");
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <Routes>
+        <Route path="/login" element={<Login admin={admin} users={users} />} />
+        <Route path="/register" element={<Register admin={admin} users={users} setUsers={setUsers}/>} />
+
+        <Route
+          path="/"
+          element={<AuthLayout loggedin={loggedin} setLoggedin={setLoggedin} />}
         >
-          Learn React
-        </a>
-      </header>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+        </Route>
+      </Routes>
     </div>
   );
-}
-
-export default App;
+};
