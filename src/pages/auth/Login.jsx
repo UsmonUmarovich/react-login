@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineLogin } from "react-icons/ai";
 
-export const Login = ({ admin, users }) => {
+export const Login = ({ admin, users, setLoggedin, setRole, setOneUser }) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,11 +14,16 @@ export const Login = ({ admin, users }) => {
     if (!name.trim() || !password.trim()) return alert("message");
 
     if (name === admin.username && password === admin.password) {
+      setLoggedin(true);
+      setRole("admin")
       return navigate("/admin");
     }
 
     for (let i = 0; i < users.length; i++) {
       if (name === users[i].username && password === users[i].password) {
+        setLoggedin(true);
+        setRole("user")
+        setOneUser(users[i])
         return navigate("/");
       }
     }
