@@ -15,7 +15,8 @@ export const Login = ({ admin, users, setLoggedin, setRole, setOneUser }) => {
 
     if (name === admin.username && password === admin.password) {
       setLoggedin(true);
-      setRole("admin")
+      setRole("admin");
+      setOneUser({name: "Admin", surname: "Adminov"})
       return navigate("/admin");
     }
 
