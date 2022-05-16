@@ -69,7 +69,7 @@ export const App = () => {
           <Route path="/" element={<Layout setLoggedin={setLoggedin} user={user}/>}>
             <Route index element={<Home />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="admin" element={<Admin />} />
+            <Route path="admin" element={<Admin users={users}/>} />
           </Route>
         </Route>
       </Routes>
