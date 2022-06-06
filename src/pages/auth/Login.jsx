@@ -16,15 +16,15 @@ export const Login = ({ admin, users, setLoggedin, setRole, setOneUser }) => {
     if (name === admin.username && password === admin.password) {
       setLoggedin(true);
       setRole("admin");
-      setOneUser({name: "Admin", surname: "Adminov"})
+      setOneUser({ name: "Admin", surname: "Adminov" });
       return navigate("/admin");
     }
 
     for (let i = 0; i < users.length; i++) {
       if (name === users[i].username && password === users[i].password) {
         setLoggedin(true);
-        setRole("user")
-        setOneUser(users[i])
+        setRole("user");
+        setOneUser(users[i]);
         return navigate("/");
       }
     }

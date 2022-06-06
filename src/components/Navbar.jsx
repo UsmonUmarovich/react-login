@@ -1,6 +1,7 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-export const Navbar = ({setLoggedin, user}) => {
+export const Navbar = ({ setLoggedin, user }) => {
   return (
     <div className="navbar bg-base-200">
       <div className="flex-1">
@@ -8,7 +9,8 @@ export const Navbar = ({setLoggedin, user}) => {
       </div>
       <div className="flex-none gap-2">
         <div>
-          <span className="uppercase">{user.name}</span>  <span className="uppercase">{user.surname}</span>
+          <span className="uppercase">{user.name}</span>{" "}
+          <span className="uppercase">{user.surname}</span>
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
@@ -21,13 +23,10 @@ export const Navbar = ({setLoggedin, user}) => {
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
+              <NavLink to="/profile" className="justify-between">
                 Profile
                 <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
+              </NavLink>
             </li>
             <li>
               <button onClick={() => setLoggedin(false)}>Logout</button>
