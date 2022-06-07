@@ -54,7 +54,9 @@ export const Register = ({
         onSubmit={submitHandler}
         className="max-w-sm w-full p-6 flex flex-col gap-6 bg-base-200 shadow-md rounded-md"
       >
-        <h1 className="text-xl">Registration</h1>
+        <h1 className="m-auto" style={{ fontSize: 45, letterSpacing: "3px" }}>
+          Registration
+        </h1>
 
         <div className="form-control">
           <label htmlFor="name" className="label">
@@ -118,7 +120,7 @@ export const Register = ({
 
         <button className="btn btn-primary w-full">SIGN UP</button>
 
-        <Link className="link" to="/login">
+        <Link className="m-auto btn" style={{background: "#232ce3", borderRadius: "13px"}} to="/login">
           LOGIN
         </Link>
       </form>

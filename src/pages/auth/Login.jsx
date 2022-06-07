@@ -37,7 +37,9 @@ export const Login = ({ admin, users, setLoggedin, setRole, setOneUser }) => {
         onSubmit={submitHandler}
         className="max-w-sm w-full rounded-md shadow-md p-6 flex flex-col gap-6 bg-base-200"
       >
-        <h1 className="text-xl">Login</h1>
+        <h1 className="m-auto" style={{ fontSize: 45, letterSpacing: "3px" }}>
+          LOGIN
+        </h1>
 
         <div className="form-control">
           <label htmlFor="username" className="label">
@@ -69,7 +71,7 @@ export const Login = ({ admin, users, setLoggedin, setRole, setOneUser }) => {
           <AiOutlineLogin className="text-xl mr-2" /> LOGIN
         </button>
 
-        <Link className="link" to="/register">
+        <Link className="m-auto btn" style={{background: "#232ce3", borderRadius: "13px"}} to="/register">
           Sign up
         </Link>
       </form>
